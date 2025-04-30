@@ -21,9 +21,12 @@ namespace GeoMottuApi.Domain.Entities
         public string Chassi { get; set; }
 
         [Column("CD_IOT_PLACA")]
+        [MaxLength(50)]
         public string? CodPlacaIot { get; set; } = string.Empty;
 
-        [Required] 
+        [Required]
+        [MaxLength(50)] 
+        
         [Column("MOTO_MODELO")]
         public ModeloMoto Modelo { get; set; }
 
