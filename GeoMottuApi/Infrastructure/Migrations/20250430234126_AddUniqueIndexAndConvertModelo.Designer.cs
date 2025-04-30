@@ -2,6 +2,7 @@
 using GeoMottuApi.Infrastructure.Data.AppData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 
@@ -10,9 +11,11 @@ using Oracle.EntityFrameworkCore.Metadata;
 namespace GeoMottuApi.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20250430234126_AddUniqueIndexAndConvertModelo")]
+    partial class AddUniqueIndexAndConvertModelo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,6 +40,7 @@ namespace GeoMottuApi.Migrations
                         .HasColumnName("CHASSI_MOTO");
 
                     b.Property<string>("CodPlacaIot")
+                        .IsRequired()
                         .HasColumnType("NVARCHAR2(450)")
                         .HasColumnName("CD_IOT_PLACA");
 
@@ -50,6 +54,7 @@ namespace GeoMottuApi.Migrations
                         .HasColumnName("MOTOR_MOTO");
 
                     b.Property<string>("Placa")
+                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("NVARCHAR2(10)")
                         .HasColumnName("PLACA_MOTO");
@@ -57,8 +62,7 @@ namespace GeoMottuApi.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("Placa", "CodPlacaIot", "Chassi")
-                        .IsUnique()
-                        .HasFilter("\"PLACA_MOTO\" IS NOT NULL AND \"CD_IOT_PLACA\" IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("TB_GEOMOTTU_MOTO");
                 });

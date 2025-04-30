@@ -13,7 +13,7 @@ namespace GeoMottuApi.Domain.Entities
 
         [StringLength(10)]
         [Column("PLACA_MOTO")]
-        public string Placa { get; set; } = string.Empty;
+        public string? Placa { get; set; } = string.Empty;
 
         [StringLength(17)]
         [Column("CHASSI_MOTO")]
@@ -21,7 +21,7 @@ namespace GeoMottuApi.Domain.Entities
         public string Chassi { get; set; }
 
         [Column("CD_IOT_PLACA")]
-        public string CodPlacaIot { get; set; } = string.Empty;
+        public string? CodPlacaIot { get; set; } = string.Empty;
 
         [Required] 
         [Column("MOTO_MODELO")]

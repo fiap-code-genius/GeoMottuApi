@@ -15,6 +15,10 @@ namespace GeoMottuApi.Infrastructure.Data.AppData
             modelBuilder.Entity<MotoEntity>()
                 .Property(m => m.Modelo)
                 .HasConversion<string>();
+
+            modelBuilder.Entity<MotoEntity>()
+                .HasIndex(m => new { m.Placa, m.CodPlacaIot, m.Chassi })
+                .IsUnique();
         }
 
         public DbSet<MotoEntity> Moto { get; set; }
