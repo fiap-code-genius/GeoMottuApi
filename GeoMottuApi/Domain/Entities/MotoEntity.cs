@@ -8,7 +8,7 @@ namespace GeoMottuApi.Domain.Entities
     public class MotoEntity
     {
         [Key]
-        [Column("MOTO_ID")]
+        [Column("ID_MOTO")]
         public int Id { get; set; }
 
         [StringLength(10)]
@@ -26,7 +26,6 @@ namespace GeoMottuApi.Domain.Entities
 
         [Required]
         [MaxLength(50)] 
-        
         [Column("MOTO_MODELO")]
         public ModeloMoto Modelo { get; set; }
 
