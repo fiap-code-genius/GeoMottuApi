@@ -24,6 +24,10 @@ namespace GeoMottuApi.Infrastructure.Data.AppData
                 .HasIndex(u => u.Email)
                 .IsUnique();
 
+            modelBuilder.Entity<PatioEntity>()
+                .Property(p => p.tipoPatio)
+                .HasConversion<string>();
+
 
         }
 

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using GeoMottuApi.Domain.Enums;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GeoMottuApi.Domain.Entities
@@ -15,7 +16,13 @@ namespace GeoMottuApi.Domain.Entities
         public int CapacidadeTotal { get; set; }
 
         [Column("REFERENCIA_PATIO")]
+        [MaxLength(100)]
         public string? LocalizacaoReferencia { get; set; }
+
+        [Required]
+        [Column("TIPO_PATIO")]
+        [MaxLength(50)]
+        public TipoPatio tipoPatio { get; set; }
 
     }
 }
