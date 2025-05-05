@@ -22,7 +22,9 @@ namespace GeoMottuApi.Domain.Entities
         [Required]
         [Column("TIPO_PATIO")]
         [MaxLength(50)]
-        public TipoPatio tipoPatio { get; set; }
+        public TipoPatio TipoDoPatio { get; set; }
+
+        public DateTime CriadoEm { get; set; } = DateTime.Now;
 
     }
 }

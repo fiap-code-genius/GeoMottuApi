@@ -33,5 +33,11 @@ namespace GeoMottuApi.Domain.Entities
         [Column("MOTOR_MOTO")]
         public int Motor { get; set; }
 
+        [Column("MOTO_PROPRIETARIO")]
+        [StringLength(150)]
+        public string? Proprietario { get; set; } = string.Empty;
+
+        public DateTime CriadoEm { get; set; } = DateTime.Now;
+
     }
 }

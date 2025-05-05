@@ -26,7 +26,6 @@ namespace GeoMottuApi.Domain.Entities
         [Column("SENHA_FUNCIONARIO")]
         public string Senha { get; set; }
 
-        [Column("DT_REGISTRO")]
         public DateTime CadastradoEm { get; set; } = DateTime.Now;
     }
 }

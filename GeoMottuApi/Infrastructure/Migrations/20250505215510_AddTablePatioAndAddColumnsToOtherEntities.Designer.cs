@@ -3,6 +3,7 @@ using System;
 using GeoMottuApi.Infrastructure.Data.AppData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 
@@ -11,9 +12,11 @@ using Oracle.EntityFrameworkCore.Metadata;
 namespace GeoMottuApi.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20250505215510_AddTablePatioAndAddColumnsToOtherEntities")]
+    partial class AddTablePatioAndAddColumnsToOtherEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,7 +35,8 @@ namespace GeoMottuApi.Migrations
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CriadoEm")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("TIMESTAMP(7)")
+                        .HasColumnName("DT_REGISTRO_FILIAL");
 
                     b.Property<string>("Endereco")
                         .IsRequired()
@@ -84,7 +88,8 @@ namespace GeoMottuApi.Migrations
                         .HasColumnName("CD_IOT_PLACA");
 
                     b.Property<DateTime>("CriadoEm")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("TIMESTAMP(7)")
+                        .HasColumnName("DT_REGISTRO_MOTO");
 
                     b.Property<string>("Modelo")
                         .IsRequired()
@@ -129,7 +134,8 @@ namespace GeoMottuApi.Migrations
                         .HasColumnName("CAPC_PATIO");
 
                     b.Property<DateTime>("CriadoEm")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("TIMESTAMP(7)")
+                        .HasColumnName("DT_REGISTRO_PATIO");
 
                     b.Property<string>("LocalizacaoReferencia")
                         .HasMaxLength(100)
@@ -157,7 +163,8 @@ namespace GeoMottuApi.Migrations
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CadastradoEm")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("TIMESTAMP(7)")
+                        .HasColumnName("DT_REGISTRO");
 
                     b.Property<string>("Email")
                         .IsRequired()

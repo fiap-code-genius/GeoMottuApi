@@ -25,7 +25,11 @@ namespace GeoMottuApi.Infrastructure.Data.AppData
                 .IsUnique();
 
             modelBuilder.Entity<PatioEntity>()
-                .Property(p => p.tipoPatio)
+                .Property(p => p.TipoDoPatio)
+                .HasConversion<string>();
+
+            modelBuilder.Entity<FilialEntity>()
+                .Property(f => f.PaisFilial)
                 .HasConversion<string>();
 
 
