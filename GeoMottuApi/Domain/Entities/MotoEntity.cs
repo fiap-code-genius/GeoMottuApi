@@ -25,7 +25,6 @@ namespace GeoMottuApi.Domain.Entities
         public string? CodPlacaIot { get; set; } = string.Empty;
 
         [Required]
-        [MaxLength(50)] 
         [Column("MOTO_MODELO")]
         public ModeloMoto Modelo { get; set; }
 

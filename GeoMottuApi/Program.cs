@@ -1,3 +1,5 @@
+using GeoMottuApi.Application.Interfaces;
+using GeoMottuApi.Application.Services;
 using GeoMottuApi.Domain.Interfaces;
 using GeoMottuApi.Infrastructure.Data.AppData;
 using GeoMottuApi.Infrastructure.Repositories;
@@ -16,7 +18,10 @@ builder.Services.AddTransient<IMotoRepository, MotoRepository>();
 builder.Services.AddTransient<IPatioRepository, PatioRepository>();
 builder.Services.AddTransient<IUsuarioRepository, UsuarioRepository>();
 
-
+builder.Services.AddTransient<IFilialApplicationService, FilialApplicationService>();
+builder.Services.AddTransient<IMotoApplicationService, MotoApplicationService>();
+builder.Services.AddTransient<IPatioApplicationService, PatioApplicationService>();
+builder.Services.AddTransient<IUsuarioApplicationService, UsuarioApplicationService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

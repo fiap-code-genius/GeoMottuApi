@@ -17,7 +17,6 @@ namespace GeoMottuApi.Domain.Entities
         public string Nome { get; set; }
 
         [Required]
-        [StringLength(50)]
         [Column("PAIS_FILIAL")]
         public PaisesFiliais PaisFilial { get; set; }
 

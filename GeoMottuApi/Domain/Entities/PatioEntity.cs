@@ -20,7 +20,6 @@ namespace GeoMottuApi.Domain.Entities
         public string? LocalizacaoReferencia { get; set; }
 
         [Required]
-        [Column("TIPO_PATIO")]
         [MaxLength(50)]
         public TipoPatio TipoDoPatio { get; set; }
 
