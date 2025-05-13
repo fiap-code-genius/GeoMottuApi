@@ -6,8 +6,8 @@ namespace GeoMottuApi.Domain.Interfaces
     {
         IEnumerable<FilialEntity> ObterTodasAsFiliais();
         FilialEntity? ObterFilialPorId(int id);
-        FilialEntity? SalvarDadosFilial(FilialEntity moto);
-        FilialEntity? EditarDadosFilial(int id, FilialEntity moto);
+        FilialEntity? SalvarDadosFilial(FilialEntity filial);
+        FilialEntity? EditarDadosFilial(int id, FilialEntity filila);
         FilialEntity? DeletarFilial(int id);
     }
 }

@@ -38,5 +38,6 @@ namespace GeoMottuApi.Infrastructure.Data.AppData
         public DbSet<MotoEntity> Moto { get; set; }
         public DbSet<UsuarioEntity> Usuario { get; set; }
         public DbSet<PatioEntity> Patio { get; set; }
+        public DbSet<FilialEntity> Filial { get; set; }
     }
 }

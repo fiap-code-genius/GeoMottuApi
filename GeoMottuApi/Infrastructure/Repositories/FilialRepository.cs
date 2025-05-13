@@ -15,27 +15,54 @@ namespace GeoMottuApi.Infrastructure.Repositories
 
         public FilialEntity? DeletarFilial(int id)
         {
-            var filial = _context.Filial
+            var filial = _context.Filial.Find(id);
+
+            if(filial is not null)
+            {
+                _context.Filial.Remove(filial);
+                _context.SaveChanges();
+
+                return filial;
+            }
+
+            return null;
+
         }
 
-        public FilialEntity? EditarDadosFilial(int id, FilialEntity moto)
+        public FilialEntity? EditarDadosFilial(int id, FilialEntity filial)
         {
-            throw new NotImplementedException();
+            filial.Id = id;
+            _context.Filial.Update(filial);
+            _context.SaveChanges();
+
+            return filial;
+
         }
 
         public FilialEntity? ObterFilialPorId(int id)
         {
-            throw new NotImplementedException();
+            var filial = _context.Filial.Find(id);
+
+            return filial;
+
+
         }
 
         public IEnumerable<FilialEntity> ObterTodasAsFiliais()
         {
-            throw new NotImplementedException();
+            var filial = _context.Filial.ToList();
+
+            return filial;
+
         }
 
-        public FilialEntity? SalvarDadosFilial(FilialEntity moto)
+        public FilialEntity? SalvarDadosFilial(FilialEntity filial)
         {
-            throw new NotImplementedException();
+            _context.Filial.Add(filial);
+            _context.SaveChanges();
+
+            return filial;
+
         }
     }
 }
