@@ -1,4 +1,5 @@
 ﻿using GeoMottuApi.Domain.Entities;
+using GeoMottuApi.Domain.Enums;
 using GeoMottuApi.Domain.Interfaces;
 using GeoMottuApi.Infrastructure.Data.AppData;
 
