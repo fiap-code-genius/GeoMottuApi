@@ -9,5 +9,6 @@ namespace GeoMottuApi.Application.Interfaces
         UsuarioEntity? SalvarDadosUsuario(UsuarioEntity usuario);
         UsuarioEntity? EditarDadosUsuario(int id, UsuarioEntity usuario);
         UsuarioEntity? DeletarUsuario(int id);
+        UsuarioEntity? ObterUsuarioPorEmail(string email);
     }
 }

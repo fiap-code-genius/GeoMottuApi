@@ -1,4 +1,5 @@
 ﻿using GeoMottuApi.Domain.Entities;
+using GeoMottuApi.Domain.Enums;
 
 namespace GeoMottuApi.Application.Interfaces
 {
@@ -9,5 +10,6 @@ namespace GeoMottuApi.Application.Interfaces
         FilialEntity? SalvarDadosFilial(FilialEntity filial);
         FilialEntity? EditarDadosFilial(int id, FilialEntity filial);
         FilialEntity? DeletarFilial(int id);
+        IEnumerable<FilialEntity?> ObterFiliaisPorPais(PaisesFiliais pais);
     }
 }
