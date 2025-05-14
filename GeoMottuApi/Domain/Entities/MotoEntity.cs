@@ -30,7 +30,7 @@ namespace GeoMottuApi.Domain.Entities
 
         [Required]
         [Column("MOTOR_MOTO")]
-        public int Motor { get; set; }
+        public double Motor { get; set; }
 
         [Column("MOTO_PROPRIETARIO")]
         [StringLength(150)]

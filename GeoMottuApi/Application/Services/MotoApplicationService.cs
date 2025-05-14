@@ -30,6 +30,12 @@ namespace GeoMottuApi.Application.Services
             return _repository.ObterMotoPorId(id);
         }
 
+        public IEnumerable<MotoEntity> ObterMotosPorModelo(ModeloMoto modelo)
+        {
+            return _repository.ObterTodasAsMotos()
+                  .Where(m => m.Modelo == modelo);
+        }
+
         public IEnumerable<MotoEntity> ObterTodasAsMotos()
         {
             return _repository.ObterTodasAsMotos();
@@ -40,10 +46,5 @@ namespace GeoMottuApi.Application.Services
             return _repository.SalvarDadosMoto(moto);
         }
 
-        public IEnumerable<MotoEntity> ObterMotosPorModelo(ModeloMoto modelo)
-        {
-            return _repository.ObterTodasAsMotos()
-                              .Where(m => m.Modelo == modelo);
-        }
     }
 }

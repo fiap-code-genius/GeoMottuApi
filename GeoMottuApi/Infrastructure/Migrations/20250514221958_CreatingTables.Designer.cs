@@ -12,15 +12,15 @@ using Oracle.EntityFrameworkCore.Metadata;
 namespace GeoMottuApi.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20250505215510_AddTablePatioAndAddColumnsToOtherEntities")]
-    partial class AddTablePatioAndAddColumnsToOtherEntities
+    [Migration("20250514221958_CreatingTables")]
+    partial class CreatingTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("ProductVersion", "9.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             OracleModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -35,8 +35,7 @@ namespace GeoMottuApi.Migrations
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CriadoEm")
-                        .HasColumnType("TIMESTAMP(7)")
-                        .HasColumnName("DT_REGISTRO_FILIAL");
+                        .HasColumnType("TIMESTAMP(7)");
 
                     b.Property<string>("Endereco")
                         .IsRequired()
@@ -58,8 +57,7 @@ namespace GeoMottuApi.Migrations
 
                     b.Property<string>("PaisFilial")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("NVARCHAR2(50)")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("PAIS_FILIAL");
 
                     b.HasKey("Id");
@@ -88,17 +86,15 @@ namespace GeoMottuApi.Migrations
                         .HasColumnName("CD_IOT_PLACA");
 
                     b.Property<DateTime>("CriadoEm")
-                        .HasColumnType("TIMESTAMP(7)")
-                        .HasColumnName("DT_REGISTRO_MOTO");
+                        .HasColumnType("TIMESTAMP(7)");
 
                     b.Property<string>("Modelo")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("NVARCHAR2(50)")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("MOTO_MODELO");
 
-                    b.Property<int>("Motor")
-                        .HasColumnType("NUMBER(10)")
+                    b.Property<double>("Motor")
+                        .HasColumnType("BINARY_DOUBLE")
                         .HasColumnName("MOTOR_MOTO");
 
                     b.Property<string>("Placa")
@@ -134,8 +130,7 @@ namespace GeoMottuApi.Migrations
                         .HasColumnName("CAPC_PATIO");
 
                     b.Property<DateTime>("CriadoEm")
-                        .HasColumnType("TIMESTAMP(7)")
-                        .HasColumnName("DT_REGISTRO_PATIO");
+                        .HasColumnType("TIMESTAMP(7)");
 
                     b.Property<string>("LocalizacaoReferencia")
                         .HasMaxLength(100)
@@ -145,8 +140,7 @@ namespace GeoMottuApi.Migrations
                     b.Property<string>("TipoDoPatio")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("NVARCHAR2(50)")
-                        .HasColumnName("TIPO_PATIO");
+                        .HasColumnType("NVARCHAR2(50)");
 
                     b.HasKey("Id");
 
@@ -163,8 +157,7 @@ namespace GeoMottuApi.Migrations
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CadastradoEm")
-                        .HasColumnType("TIMESTAMP(7)")
-                        .HasColumnName("DT_REGISTRO");
+                        .HasColumnType("TIMESTAMP(7)");
 
                     b.Property<string>("Email")
                         .IsRequired()

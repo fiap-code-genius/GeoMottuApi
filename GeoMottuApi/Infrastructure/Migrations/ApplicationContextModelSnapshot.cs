@@ -90,8 +90,8 @@ namespace GeoMottuApi.Migrations
                         .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("MOTO_MODELO");
 
-                    b.Property<int>("Motor")
-                        .HasColumnType("NUMBER(10)")
+                    b.Property<double>("Motor")
+                        .HasColumnType("BINARY_DOUBLE")
                         .HasColumnName("MOTOR_MOTO");
 
                     b.Property<string>("Placa")

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GeoMottuApi.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateTableFilial : Migration
+    public partial class CreatingTables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,7 +18,7 @@ namespace GeoMottuApi.Migrations
                     ID_FILIAL = table.Column<int>(type: "NUMBER(10)", nullable: false)
                         .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
                     NM_FILIAL = table.Column<string>(type: "NVARCHAR2(50)", maxLength: 50, nullable: false),
-                    PAIS_FILIAL = table.Column<string>(type: "NVARCHAR2(50)", maxLength: 50, nullable: false),
+                    PAIS_FILIAL = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     ESTADO_FILIAL = table.Column<string>(type: "NVARCHAR2(50)", maxLength: 50, nullable: false),
                     ENDERECO_FILIAL = table.Column<string>(type: "NVARCHAR2(150)", maxLength: 150, nullable: false),
                     CriadoEm = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: false)
@@ -37,8 +37,8 @@ namespace GeoMottuApi.Migrations
                     PLACA_MOTO = table.Column<string>(type: "NVARCHAR2(10)", maxLength: 10, nullable: true),
                     CHASSI_MOTO = table.Column<string>(type: "NVARCHAR2(17)", maxLength: 17, nullable: false),
                     CD_IOT_PLACA = table.Column<string>(type: "NVARCHAR2(50)", maxLength: 50, nullable: true),
-                    MOTO_MODELO = table.Column<string>(type: "NVARCHAR2(50)", maxLength: 50, nullable: false),
-                    MOTOR_MOTO = table.Column<int>(type: "NUMBER(10)", nullable: false),
+                    MOTO_MODELO = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
+                    MOTOR_MOTO = table.Column<double>(type: "BINARY_DOUBLE", nullable: false),
                     MOTO_PROPRIETARIO = table.Column<string>(type: "NVARCHAR2(150)", maxLength: 150, nullable: true),
                     CriadoEm = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: false)
                 },
@@ -55,7 +55,7 @@ namespace GeoMottuApi.Migrations
                         .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
                     CAPC_PATIO = table.Column<int>(type: "NUMBER(10)", nullable: false),
                     REFERENCIA_PATIO = table.Column<string>(type: "NVARCHAR2(100)", maxLength: 100, nullable: true),
-                    TIPO_PATIO = table.Column<string>(type: "NVARCHAR2(50)", maxLength: 50, nullable: false),
+                    TipoDoPatio = table.Column<string>(type: "NVARCHAR2(50)", maxLength: 50, nullable: false),
                     CriadoEm = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: false)
                 },
                 constraints: table =>
