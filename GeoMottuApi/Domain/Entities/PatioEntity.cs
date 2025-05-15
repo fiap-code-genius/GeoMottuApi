@@ -20,7 +20,6 @@ namespace GeoMottuApi.Domain.Entities
         public string? LocalizacaoReferencia { get; set; }
 
         [Required]
-        [MaxLength(50)]
         public TipoPatio TipoDoPatio { get; set; }
 
         public DateTime CriadoEm { get; set; } = DateTime.Now;

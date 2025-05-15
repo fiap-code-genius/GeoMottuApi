@@ -9,23 +9,23 @@ namespace GeoMottuApi.Presentation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FilialController : ControllerBase
+    public class PatioController : ControllerBase
     {
-        private readonly IFilialApplicationService _service;
+        private readonly IPatioApplicationService _service;
 
-        public FilialController(IFilialApplicationService service)
+        public PatioController(IPatioApplicationService service)
         {
             _service = service;
         }
 
         [HttpPost]
-        [SwaggerOperation(Summary = "Cadastra uma filial", Description = "Endpoint destinado ao cadastro das filiais da Mottu e seus países respectivos")]
-        [Produces<FilialEntity>]
-        public IActionResult Post([FromBody] FilialEntity entity)
+        [SwaggerOperation(Summary = "Cadastra um pátio", Description = "Endpoint destinado ao cadastro dos pátios das filiais da Mottu")]
+        [Produces<PatioEntity>]
+        public IActionResult Post([FromBody] PatioEntity entity)
         {
             try
             {
-                var objModel = _service.SalvarDadosFilial(entity);
+                var objModel = _service.SalvarDadosPatio(entity);
 
                 if (objModel is not null)
                     return Ok(objModel);
@@ -43,11 +43,11 @@ namespace GeoMottuApi.Presentation.Controllers
         }
 
         [HttpGet]
-        [SwaggerOperation(Summary = "Lista de todas as filiais", Description = "Endpoint que busca todas as filiais cadastrados no banco de dados e as devolve com todas as informações")]
-        [Produces<IEnumerable<FilialEntity>>]
+        [SwaggerOperation(Summary = "Lista de todos os pátios", Description = "Endpoint que busca todos os pátios cadastrados e exibe as informações para o usuário por um JSON")]
+        [Produces<IEnumerable<PatioEntity>>]
         public IActionResult Get()
         {
-            var objModel = _service.ObterTodasAsFiliais();
+            var objModel = _service.ObterTodosOsPatios();
 
             if (objModel is not null)
                 return Ok(objModel);
@@ -56,11 +56,11 @@ namespace GeoMottuApi.Presentation.Controllers
         }
 
         [HttpGet("{id}")]
-        [SwaggerOperation(Summary = "Busca uma Filial pelo id", Description = "Este endpoint busca uma filial pelo seu id do banco de dados devolvendo os dados da filial correspondente")]
-        [Produces<FilialEntity>]
+        [SwaggerOperation(Summary = "Busca um pátio pelo id", Description = "Este endpoint busca um pátio pelo seu id e exibe suas informações")]
+        [Produces<PatioEntity>]
         public IActionResult GetPorId(int id)
         {
-            var objModel = _service.ObterFilialPorId(id);
+            var objModel = _service.ObterPatioPorId(id);
 
             if (objModel is not null)
                 return Ok(objModel);
@@ -68,12 +68,12 @@ namespace GeoMottuApi.Presentation.Controllers
             return BadRequest("Não foi possível obter os dados");
         }
 
-        [HttpGet("pais/{pais}")]
-        [SwaggerOperation(Summary = "Busca filiais pelo país", Description = "Endpoint feito com a finalidade de encontrar todas as filiais de um país específico(Brasil e México)")]
-        [Produces<IEnumerable<FilialEntity>>]
-        public IActionResult GetPorModelo(PaisesFiliais pais)
+        [HttpGet("tipo/patio/{patio}")]
+        [SwaggerOperation(Summary = "Busca os pátios pelo tipo", Description = "Endpoint feito com a finalidade de encontrar todos os pátios comum tipo específico")]
+        [Produces<IEnumerable<PatioEntity>>]
+        public IActionResult GetPorModelo(TipoPatio patio)
         {
-            var objModel = _service.ObterFiliaisPorPais(pais);
+            var objModel = _service.ObterPatiosPorTipo(patio);
 
             if (objModel is not null)
                 return Ok(objModel);
@@ -82,13 +82,13 @@ namespace GeoMottuApi.Presentation.Controllers
         }
 
         [HttpPut("update/{id}")]
-        [SwaggerOperation(Summary = "Atualização de filial", Description = "Endpoint cuja finalidade é receber um id de uma filial e atualizar a mesma con os dados que o usuário entregar")]
-        [Produces<FilialEntity>]
-        public IActionResult Put(int id, [FromBody] FilialEntity entity)
+        [SwaggerOperation(Summary = "Atualização de pátio", Description = "Endpoint cuja finalidade é receber um id de um pátio e atualizar o mesmo com as informações novas")]
+        [Produces<PatioEntity>]
+        public IActionResult Put(int id, [FromBody] PatioEntity entity)
         {
             try
             {
-                var objModel = _service.EditarDadosFilial(id, entity);
+                var objModel = _service.EditarDadosPatio(id, entity);
 
                 if (objModel is not null)
                     return Ok(objModel);
@@ -106,11 +106,11 @@ namespace GeoMottuApi.Presentation.Controllers
         }
 
         [HttpDelete("delete/{id}")]
-        [SwaggerOperation(Summary = "Deletar informações da Filial", Description = "Endpoint em que se coleta o id de uma filial e deleta a correspondente")]
-        [Produces<FilialEntity>]
+        [SwaggerOperation(Summary = "Deletar informações do pátio", Description = "Endpoint em que se coleta o id de um pátio e deleta as informações do mesmo com o id correspondente")]
+        [Produces<PatioEntity>]
         public IActionResult Delete(int id)
         {
-            var objModel = _service.DeletarFilial(id);
+            var objModel = _service.DeletarPatio(id);
 
             if (objModel is not null)
                 return Ok(objModel);
