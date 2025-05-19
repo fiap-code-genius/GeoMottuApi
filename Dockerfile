@@ -15,11 +15,20 @@ RUN dotnet publish GeoMottuApi/GeoMottuApi.csproj -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS runtime
 WORKDIR /app
 
+# Cria um usuário não root
+RUN adduser -D appuser
+
 # Copia os arquivos publicados do build
-COPY --from=build /app/publish .
+COPY --from=build /app/publish ./
 
 # Copia arquivos de configuração
 COPY GeoMottuApi/appsettings.json ./appsettings.json
+
+# Altera propriedade dos arquivos para o novo usuário
+RUN chown -R appuser:appuser /app
+
+# Troca para o usuário não root
+USER appuser
 
 # Expõe a porta usada pelo Kestrel
 EXPOSE 8080
