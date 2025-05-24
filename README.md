@@ -75,10 +75,10 @@ dotnet run
 ```
 
 A API estará disponível em:
-- http://localhost:5000 (HTTP)
+- http://localhost:5280 (HTTP)
 
 A documentação Swagger estará disponível em:
-- http://localhost:5000/swagger
+- http://localhost:5280/swagger
 
 ## 🐳 Docker
 
